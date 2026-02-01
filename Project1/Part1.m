@@ -36,7 +36,16 @@ for i = 1:5
         C2 = C2 * 10^9;
         C3 = C3 * 10^9;
 
+        syms V1 V2
+        eq1 = (V1 - 1) / R1 + V1/R4 + (V1 - V2)/R2 == 0;
+        eq2 = (V2 - V1) / R2 + V2 / R5 + V2 / (R3 + R6) == 0;
+        sol = solve([eq1, eq2], [V1, V2]);
+        Vo = double(sol.V2 * R6 / (R3 + R6));
+        
+        
+
         fprintf("For i= %d, j= %d, C1 = %d nF, C2 = %d nF, C3 = %d nF\n", i, j, C1, C2, C3);
+        fprintf("Vo = %d\n", Vo);
 
 
         % fprintf("Yeet %d %d\n", i, j);
