@@ -52,6 +52,11 @@ for i = 1:5
     end
 end
 
+% Part B
+s = tf('s');
+TF = 0.125 * 10^4 / (s + 10^4) * 10^5 / (s + 10^5) * 10^6 / (s + 10^6);
+bode(TF);
+grid on;
 
 % Parallel Addition of resistors to reduce cluttering
 function resistance = pa(r1, r2)
